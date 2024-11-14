@@ -24,13 +24,16 @@ class User < ApplicationRecord
   # User#comments: returns rows from the comments table associated to this user by the author_id column
 
   # User#own_photos: returns rows from the photos table  associated to this user by the owner_id column
+  has_many(:own_photos, class_name: "Photo", foreign_key:"owner_id")
 
   # User#likes: returns rows from the likes table associated to this user by the fan_id column
+  has_many(:likes, class_name: "Like", foreign_key: "fan_id")
 
   # User#sent_follow_requests: returns rows from the follow requests table associated to this user by the sender_id column
+  has_many(:sent_follow, class_name: "FollowRequest", "sender_id")
 
   # User#received_follow_requests: returns rows from the follow requests table associated to this user by the recipient_id column
-
+  
 
   ### Scoped direct associations
 
